@@ -12,7 +12,7 @@ namespace BucketList.API.Controllers
 
         public DestinationController()
         {
-            _destinationGetServices = new DestinationGetServices();
+            _destinationGetServices = new DestinationGetServices(); 
         }
 
         [HttpGet]

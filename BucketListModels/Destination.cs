@@ -8,4 +8,4 @@
         public string Currency { get; set; }
         public string Citizenship { get; set; }
     }
-}
+} 

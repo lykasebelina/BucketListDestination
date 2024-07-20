@@ -56,7 +56,7 @@ namespace BucketListDestination
 
                     if (doneInput.Equals("DONE", StringComparison.OrdinalIgnoreCase))
                     {
-                        // Save the new destination record to the database
+                       
                         Destination newDestination = new Destination
                         {
                             Name = newName,
@@ -70,7 +70,7 @@ namespace BucketListDestination
 
                         Console.WriteLine("New destination added successfully.");
 
-                        // Refresh destinations list after adding new record
+                    
                         destinations = destinationGetServices.GetAllDestinations();
                         Console.WriteLine("\nUpdated Bucket List Destinations:");
                         foreach (var destination in destinations)
@@ -92,7 +92,6 @@ namespace BucketListDestination
                     Console.WriteLine("Invalid input. Process Cancelled. No changes made.");
                 }
 
-                // Prompt for deleting a destination
                 Console.Write("Do you want to delete a destination? (Type Yes or No): ");
                 string deleteChoice = Console.ReadLine();
 
@@ -101,14 +100,12 @@ namespace BucketListDestination
                     Console.Write("Enter destination name to delete: ");
                     string deleteName = Console.ReadLine();
 
-                    // Check if the destination exists before attempting to delete
                     var destinationToDelete = destinationGetServices.GetDestinationByName(deleteName);
                     if (destinationToDelete != null)
                     {
                         destinationGetServices.DeleteDestination(deleteName);
                         Console.WriteLine($"Destination '{deleteName}' deleted successfully.");
 
-                        // Refresh destinations list after deletion
                         destinations = destinationGetServices.GetAllDestinations();
                         Console.WriteLine("\nUpdated Bucket List Destinations:");
                         foreach (var destination in destinations)
@@ -130,7 +127,6 @@ namespace BucketListDestination
                     Console.WriteLine("Invalid input. Process Cancelled. No changes made.");
                 }
 
-                // Prompt for viewing a destination
                 Console.Write("Do you want to view destination info? (Type Yes or No): ");
                 string viewChoice = Console.ReadLine();
 
@@ -162,7 +158,6 @@ namespace BucketListDestination
                     Console.WriteLine("Invalid input. Process Cancelled. No changes made.");
                 }
 
-                // Prompt for updating a destination
                 Console.Write("Do you want to update a destination? (Type Yes or No): ");
                 string updateChoice = Console.ReadLine();
 
@@ -191,7 +186,7 @@ namespace BucketListDestination
 
                         if (doneUpdate.Equals("DONE", StringComparison.OrdinalIgnoreCase))
                         {
-                            // Update the destination record in the database
+                        
                             Destination updatedDestination = new Destination
                             {
                                 Name = updateName,
@@ -205,7 +200,6 @@ namespace BucketListDestination
 
                             Console.WriteLine("Destination updated successfully.");
 
-                            // Display updated destination details
                             var updatedDestinationInfo = destinationGetServices.GetDestinationByName(updateName);
                             if (updatedDestinationInfo != null)
                             {
