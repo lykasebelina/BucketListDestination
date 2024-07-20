@@ -17,8 +17,11 @@ namespace BucketListDestination
             Console.Write("Enter password: ");
             string password = Console.ReadLine();
 
+           
+
             if (getServices.ValidateUser(username, password))
             {
+
                 Console.WriteLine("My Bucket List Destinations:");
                 DestinationGetServices destinationGetServices = new DestinationGetServices();
                 var destinations = destinationGetServices.GetAllDestinations();

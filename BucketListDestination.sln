@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BucketListDestination", "BucketListDestination\BucketListDestination.csproj", "{05DAB5C0-E43C-40A3-A052-4741D8CE5DAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BucketListDestination", "BucketListDestination\BucketListDestination.csproj", "{05DAB5C0-E43C-40A3-A052-4741D8CE5DAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BucketListData", "BucketListData\BucketListData.csproj", "{697B8649-F52D-4A73-B671-7DEA6C69FFA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BucketListData", "BucketListData\BucketListData.csproj", "{697B8649-F52D-4A73-B671-7DEA6C69FFA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BucketListModels", "BucketListModels\BucketListModels.csproj", "{A8EBB8B7-3E42-48C2-8933-8DBE40B7F1CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BucketListModels", "BucketListModels\BucketListModels.csproj", "{A8EBB8B7-3E42-48C2-8933-8DBE40B7F1CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BucketListServices", "BucketListServices\BucketListServices.csproj", "{F57A176C-2D15-42CC-83BD-27CB338B30D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BucketListServices", "BucketListServices\BucketListServices.csproj", "{F57A176C-2D15-42CC-83BD-27CB338B30D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BucketListAPI", "BucketListAPI\BucketListAPI.csproj", "{69AC67EA-3153-4002-920B-811AD1752059}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F57A176C-2D15-42CC-83BD-27CB338B30D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F57A176C-2D15-42CC-83BD-27CB338B30D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F57A176C-2D15-42CC-83BD-27CB338B30D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69AC67EA-3153-4002-920B-811AD1752059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69AC67EA-3153-4002-920B-811AD1752059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69AC67EA-3153-4002-920B-811AD1752059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69AC67EA-3153-4002-920B-811AD1752059}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
