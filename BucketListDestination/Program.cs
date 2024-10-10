@@ -10,6 +10,7 @@ namespace BucketListDestination
         static void Main(string[] args)
         {
             UserGetServices getServices = new UserGetServices();
+            MailService mailService = new MailService();
 
             Console.Write("Enter username: ");
             string username = Console.ReadLine();
@@ -17,12 +18,10 @@ namespace BucketListDestination
             Console.Write("Enter password: ");
             string password = Console.ReadLine();
 
-           
-
             if (getServices.ValidateUser(username, password))
             {
-
-                Console.WriteLine("My Bucket List Destinations:");
+                Console.WriteLine("\n_________________________________");
+                Console.WriteLine("\nMy Bucket List Destinations:");
                 DestinationGetServices destinationGetServices = new DestinationGetServices();
                 var destinations = destinationGetServices.GetAllDestinations();
 
@@ -31,12 +30,14 @@ namespace BucketListDestination
                     Console.WriteLine(destination.Name);
                 }
 
-                Console.Write("Do you want to add new destination? (Type Yes or No): ");
+                Console.WriteLine();
+
+                Console.Write(">> Do you want to add new destination? (Type Yes or No): ");
                 string addChoice = Console.ReadLine();
 
                 if (addChoice.Equals("Yes", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.Write("Enter Destination Name: ");
+                    Console.Write("\nEnter Destination Name: ");
                     string newName = Console.ReadLine();
 
                     Console.Write("Enter Capital: ");
@@ -56,7 +57,7 @@ namespace BucketListDestination
 
                     if (doneInput.Equals("DONE", StringComparison.OrdinalIgnoreCase))
                     {
-                       
+                        Console.WriteLine();
                         Destination newDestination = new Destination
                         {
                             Name = newName,
@@ -67,10 +68,10 @@ namespace BucketListDestination
                         };
 
                         destinationGetServices.AddNewDestination(newDestination);
-
                         Console.WriteLine("New destination added successfully.");
 
-                    
+                        mailService.SendEmail("New Destination Added", $"A new destination '{newName}' has been added to the bucket list.");
+
                         destinations = destinationGetServices.GetAllDestinations();
                         Console.WriteLine("\nUpdated Bucket List Destinations:");
                         foreach (var destination in destinations)
@@ -92,19 +93,21 @@ namespace BucketListDestination
                     Console.WriteLine("Invalid input. Process Cancelled. No changes made.");
                 }
 
-                Console.Write("Do you want to delete a destination? (Type Yes or No): ");
+                Console.Write("\n>> Do you want to delete a destination? (Type Yes or No): ");
                 string deleteChoice = Console.ReadLine();
 
                 if (deleteChoice.Equals("Yes", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.Write("Enter destination name to delete: ");
+                    Console.Write("\nEnter destination name to delete: ");
                     string deleteName = Console.ReadLine();
 
                     var destinationToDelete = destinationGetServices.GetDestinationByName(deleteName);
                     if (destinationToDelete != null)
                     {
                         destinationGetServices.DeleteDestination(deleteName);
-                        Console.WriteLine($"Destination '{deleteName}' deleted successfully.");
+                        Console.WriteLine($"\nDestination '{deleteName}' deleted successfully.");
+
+                        mailService.SendEmail("Destination Deleted", $"The destination '{deleteName}' has been deleted from the bucket list.");
 
                         destinations = destinationGetServices.GetAllDestinations();
                         Console.WriteLine("\nUpdated Bucket List Destinations:");
@@ -127,12 +130,12 @@ namespace BucketListDestination
                     Console.WriteLine("Invalid input. Process Cancelled. No changes made.");
                 }
 
-                Console.Write("Do you want to view destination info? (Type Yes or No): ");
+                Console.Write("\n>> Do you want to view destination info? (Type Yes or No): ");
                 string viewChoice = Console.ReadLine();
 
                 if (viewChoice.Equals("Yes", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.Write("Enter a destination: ");
+                    Console.Write("\nEnter a destination: ");
                     string viewName = Console.ReadLine();
 
                     var destinationToView = destinationGetServices.GetDestinationByName(viewName);
@@ -158,12 +161,12 @@ namespace BucketListDestination
                     Console.WriteLine("Invalid input. Process Cancelled. No changes made.");
                 }
 
-                Console.Write("Do you want to update a destination? (Type Yes or No): ");
+                Console.Write("\n>> Do you want to update a destination? (Type Yes or No): ");
                 string updateChoice = Console.ReadLine();
 
                 if (updateChoice.Equals("Yes", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.Write("Enter a destination: ");
+                    Console.Write("\nEnter a destination: ");
                     string updateName = Console.ReadLine();
 
                     var destinationToUpdate = destinationGetServices.GetDestinationByName(updateName);
@@ -186,7 +189,7 @@ namespace BucketListDestination
 
                         if (doneUpdate.Equals("DONE", StringComparison.OrdinalIgnoreCase))
                         {
-                        
+
                             Destination updatedDestination = new Destination
                             {
                                 Name = updateName,
@@ -197,8 +200,9 @@ namespace BucketListDestination
                             };
 
                             destinationGetServices.UpdateDestination(updatedDestination);
+                            Console.WriteLine("\nDestination updated successfully.");
 
-                            Console.WriteLine("Destination updated successfully.");
+                            mailService.SendEmail("Destination Updated", $"The destination '{updateName}' has been updated.");
 
                             var updatedDestinationInfo = destinationGetServices.GetDestinationByName(updateName);
                             if (updatedDestinationInfo != null)
@@ -232,7 +236,7 @@ namespace BucketListDestination
             }
             else
             {
-                Console.WriteLine("Invalid username or password.");
+                Console.WriteLine("\nInvalid username or password.");
             }
         }
     }

@@ -8,7 +8,8 @@ namespace BucketListData
     public class SqlDbData
     {
         static string connectionString
-            = "Server=tcp:20.2.81.61,1433; Database=BucketList; User Id=sa; Password=Sebelina.bsit21;";
+            = "Data Source=DESKTOP-0DJQ261\\SQLEXPRESS;Initial Catalog=BucketList;Integrated Security=True;";
+            //= "Server=tcp:20.2.81.61,1433; Database=BucketList; User Id=sa; Password=Sebelina.bsit21;";
 
         public List<Destination> GetAllDestinations()
         {
